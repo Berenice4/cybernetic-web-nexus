@@ -38,13 +38,13 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
 
   const getTypeIcon = (section: string) => {
     switch (section) {
-      case "activities": return <List className="h-4 w-4 text-blue-400" />;
-      case "workers": return <Users className="h-4 w-4 text-green-400" />;
-      case "equipment": return <Wrench className="h-4 w-4 text-yellow-400" />;
-      case "supplies": return <Box className="h-4 w-4 text-purple-400" />;
-      case "circumstances": return <CloudLightning className="h-4 w-4 text-orange-400" />;
-      case "serviceOrders": return <FileInput className="h-4 w-4 text-pink-400" />;
-      default: return <FileText className="h-4 w-4 text-slate-400" />;
+      case "activities": return <List className="h-4 w-4 text-blue-500" />;
+      case "workers": return <Users className="h-4 w-4 text-green-500" />;
+      case "equipment": return <Wrench className="h-4 w-4 text-yellow-500" />;
+      case "supplies": return <Box className="h-4 w-4 text-purple-500" />;
+      case "circumstances": return <CloudLightning className="h-4 w-4 text-orange-500" />;
+      case "serviceOrders": return <FileInput className="h-4 w-4 text-pink-500" />;
+      default: return <FileText className="h-4 w-4 text-slate-500" />;
     }
   };
   
@@ -57,15 +57,15 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
           placeholder="Search journal entries..." 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-9 bg-slate-900 border-slate-700 text-slate-200"
+          className="pl-9 bg-white border-slate-300 text-slate-800"
         />
       </div>
       
       {filteredEntries.length === 0 ? (
-        <div className="text-center py-12 border border-dashed border-slate-700 rounded-md">
-          <FileText className="mx-auto h-12 w-12 text-slate-500 mb-4" />
-          <h3 className="text-lg font-medium mb-2">No Entries Found</h3>
-          <p className="text-slate-400">
+        <div className="text-center py-12 border border-dashed border-slate-300 rounded-md bg-slate-50">
+          <FileText className="mx-auto h-12 w-12 text-slate-400 mb-4" />
+          <h3 className="text-lg font-medium mb-2 text-slate-700">No Entries Found</h3>
+          <p className="text-slate-500">
             {entries.length === 0 
               ? "Start by creating your first work journal entry"
               : "Try adjusting your search term"}
@@ -74,7 +74,7 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
             <Button 
               variant="outline" 
               onClick={() => setSearchTerm("")}
-              className="mt-4 bg-slate-800 border-slate-700 text-slate-200"
+              className="mt-4 bg-white border-slate-300 text-slate-700 hover:bg-slate-50"
             >
               Clear Search
             </Button>
@@ -86,16 +86,16 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
             <AccordionItem 
               key={entry.id} 
               value={entry.id}
-              className="border border-slate-700/50 rounded-lg overflow-hidden bg-slate-900/30 backdrop-blur-sm"
+              className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm"
             >
-              <AccordionTrigger className="px-4 py-3 hover:bg-slate-800/50 data-[state=open]:bg-slate-800/50">
+              <AccordionTrigger className="px-4 py-3 hover:bg-slate-50 data-[state=open]:bg-slate-50">
                 <div className="flex items-center gap-3">
-                  <Calendar className="h-5 w-5 text-blue-400" />
+                  <Calendar className="h-5 w-5 text-blue-500" />
                   <div className="text-left">
-                    <div className="font-medium">
+                    <div className="font-medium text-slate-800">
                       Entry: {entry.date}
                     </div>
-                    <div className="text-xs text-slate-400 mt-1">
+                    <div className="text-xs text-slate-500 mt-1">
                       {entry.activities.length > 0 ? entry.activities[0].activity : "No activity specified"} • 
                       {entry.workers.reduce((total, worker) => total + worker.count, 0)} workers
                     </div>
@@ -111,22 +111,22 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 mb-2">
                         {getTypeIcon("activities")}
-                        <h4 className="text-sm font-medium text-blue-400">Activities</h4>
+                        <h4 className="text-sm font-medium text-blue-700">Activities</h4>
                       </div>
                       
                       {entry.activities.map((activity, idx) => (
-                        <div key={idx} className="p-3 bg-slate-800/70 rounded-md space-y-1">
+                        <div key={idx} className="p-3 bg-slate-50 rounded-md space-y-1">
                           <div className="flex justify-between">
-                            <span className="text-xs text-slate-400">Order:</span>
-                            <span className="text-xs font-medium">{activity.order}</span>
+                            <span className="text-xs text-slate-500">Order:</span>
+                            <span className="text-xs font-medium text-slate-800">{activity.order}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-xs text-slate-400">Mode:</span>
-                            <span className="text-xs font-medium">{activity.mode}</span>
+                            <span className="text-xs text-slate-500">Mode:</span>
+                            <span className="text-xs font-medium text-slate-800">{activity.mode}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-xs text-slate-400">Activity:</span>
-                            <span className="text-xs font-medium">{activity.activity}</span>
+                            <span className="text-xs text-slate-500">Activity:</span>
+                            <span className="text-xs font-medium text-slate-800">{activity.activity}</span>
                           </div>
                         </div>
                       ))}
@@ -136,15 +136,15 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 mb-2">
                         {getTypeIcon("workers")}
-                        <h4 className="text-sm font-medium text-green-400">Workers</h4>
+                        <h4 className="text-sm font-medium text-green-700">Workers</h4>
                       </div>
                       
                       <div className="grid grid-cols-2 gap-2">
                         {entry.workers.map((worker, idx) => (
-                          <div key={idx} className="p-3 bg-slate-800/70 rounded-md">
+                          <div key={idx} className="p-3 bg-slate-50 rounded-md">
                             <div className="flex flex-col">
-                              <span className="text-sm font-medium mb-1">{worker.qualification}</span>
-                              <Badge variant="outline" className="w-fit">
+                              <span className="text-sm font-medium mb-1 text-slate-800">{worker.qualification}</span>
+                              <Badge variant="outline" className="w-fit bg-green-50 text-green-700 border-green-200">
                                 {worker.count} {worker.count === 1 ? 'worker' : 'workers'}
                               </Badge>
                             </div>
@@ -157,18 +157,18 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 mb-2">
                         {getTypeIcon("equipment")}
-                        <h4 className="text-sm font-medium text-yellow-400">Equipment</h4>
+                        <h4 className="text-sm font-medium text-yellow-700">Equipment</h4>
                       </div>
                       
                       {entry.equipment.map((item, idx) => (
-                        <div key={idx} className="p-3 bg-slate-800/70 rounded-md">
+                        <div key={idx} className="p-3 bg-slate-50 rounded-md">
                           <div className="flex justify-between items-start">
-                            <span className="text-sm font-medium">{item.name}</span>
-                            <Badge variant="outline" className="bg-yellow-500/10 text-yellow-400 border-yellow-400/30">
+                            <span className="text-sm font-medium text-slate-800">{item.name}</span>
+                            <Badge variant="outline" className="bg-yellow-50 text-yellow-700 border-yellow-200">
                               Equipment
                             </Badge>
                           </div>
-                          <p className="text-xs text-slate-400 mt-1">
+                          <p className="text-xs text-slate-500 mt-1">
                             {item.description}
                           </p>
                         </div>
@@ -182,16 +182,16 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 mb-2">
                         {getTypeIcon("supplies")}
-                        <h4 className="text-sm font-medium text-purple-400">Supplies</h4>
+                        <h4 className="text-sm font-medium text-purple-700">Supplies</h4>
                       </div>
                       
                       {entry.supplies.map((supply, idx) => (
-                        <div key={idx} className="p-3 bg-slate-800/70 rounded-md">
+                        <div key={idx} className="p-3 bg-slate-50 rounded-md">
                           <div className="flex justify-between items-start">
-                            <span className="text-sm font-medium">{supply.name}</span>
-                            <span className="text-xs text-slate-400">Inv: {supply.invoice}</span>
+                            <span className="text-sm font-medium text-slate-800">{supply.name}</span>
+                            <span className="text-xs text-slate-500">Inv: {supply.invoice}</span>
                           </div>
-                          <p className="text-xs text-slate-400 mt-1">
+                          <p className="text-xs text-slate-500 mt-1">
                             {supply.details}
                           </p>
                         </div>
@@ -202,28 +202,28 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 mb-2">
                         {getTypeIcon("circumstances")}
-                        <h4 className="text-sm font-medium text-orange-400">Circumstances</h4>
+                        <h4 className="text-sm font-medium text-orange-700">Circumstances</h4>
                       </div>
                       
                       {entry.circumstances.map((circumstance, idx) => (
-                        <div key={idx} className="p-3 bg-slate-800/70 rounded-md">
+                        <div key={idx} className="p-3 bg-slate-50 rounded-md">
                           <div className="grid gap-2">
                             <div>
-                              <span className="text-xs text-slate-400 block">Description:</span>
-                              <span className="text-sm">{circumstance.description}</span>
+                              <span className="text-xs text-slate-500 block">Description:</span>
+                              <span className="text-sm text-slate-800">{circumstance.description}</span>
                             </div>
                             <div>
-                              <span className="text-xs text-slate-400 block">Weather:</span>
-                              <span className="text-sm">{circumstance.weather}</span>
+                              <span className="text-xs text-slate-500 block">Weather:</span>
+                              <span className="text-sm text-slate-800">{circumstance.weather}</span>
                             </div>
                             <div>
-                              <span className="text-xs text-slate-400 block">Terrain:</span>
-                              <span className="text-sm">{circumstance.terrain}</span>
+                              <span className="text-xs text-slate-500 block">Terrain:</span>
+                              <span className="text-sm text-slate-800">{circumstance.terrain}</span>
                             </div>
                             {circumstance.notes && (
                               <div>
-                                <span className="text-xs text-slate-400 block">Notes:</span>
-                                <span className="text-sm">{circumstance.notes}</span>
+                                <span className="text-xs text-slate-500 block">Notes:</span>
+                                <span className="text-sm text-slate-800">{circumstance.notes}</span>
                               </div>
                             )}
                           </div>
@@ -235,22 +235,22 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 mb-2">
                         {getTypeIcon("serviceOrders")}
-                        <h4 className="text-sm font-medium text-pink-400">Service Orders</h4>
+                        <h4 className="text-sm font-medium text-pink-700">Service Orders</h4>
                       </div>
                       
                       {entry.serviceOrders.map((order, idx) => (
-                        <div key={idx} className="p-3 bg-slate-800/70 rounded-md">
+                        <div key={idx} className="p-3 bg-slate-50 rounded-md">
                           <div className="flex justify-between items-start">
-                            <span className="text-sm font-medium">{order.orderNumber}</span>
-                            <Badge variant="outline" className="bg-pink-500/10 text-pink-400 border-pink-400/30">
+                            <span className="text-sm font-medium text-slate-800">{order.orderNumber}</span>
+                            <Badge variant="outline" className="bg-pink-50 text-pink-700 border-pink-200">
                               Order
                             </Badge>
                           </div>
-                          <p className="text-xs text-slate-400 mt-1">
+                          <p className="text-xs text-slate-500 mt-1">
                             {order.description}
                           </p>
-                          <p className="text-xs mt-2">
-                            <span className="text-slate-400">Issued by:</span> {order.issuedBy}
+                          <p className="text-xs mt-2 text-slate-700">
+                            <span className="text-slate-500">Issued by:</span> {order.issuedBy}
                           </p>
                         </div>
                       ))}
@@ -259,14 +259,14 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
                 </div>
                 
                 {/* Additional Options */}
-                <div className="mt-6 pt-6 border-t border-slate-700/50 grid grid-cols-3 gap-4">
-                  <Button variant="outline" size="sm" className="bg-slate-800 border-slate-700 text-slate-200">
+                <div className="mt-6 pt-6 border-t border-slate-200 grid grid-cols-3 gap-4">
+                  <Button variant="outline" size="sm" className="bg-white border-slate-200 text-slate-700 hover:bg-slate-50">
                     Export as PDF
                   </Button>
-                  <Button variant="outline" size="sm" className="bg-slate-800 border-slate-700 text-slate-200">
+                  <Button variant="outline" size="sm" className="bg-white border-slate-200 text-slate-700 hover:bg-slate-50">
                     Print Entry
                   </Button>
-                  <Button variant="outline" size="sm" className="bg-slate-800 border-slate-700 text-slate-200">
+                  <Button variant="outline" size="sm" className="bg-white border-slate-200 text-slate-700 hover:bg-slate-50">
                     Share Entry
                   </Button>
                 </div>
