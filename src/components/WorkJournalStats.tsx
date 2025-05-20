@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { WorkJournalEntry } from "@/types/workJournal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Users, Tool, LineChart } from "lucide-react";
+import { Calendar, Users, Wrench, LineChart } from "lucide-react";
 import { ChartContainer } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from "recharts";
 
@@ -105,7 +104,7 @@ const WorkJournalStats = ({ entries }: WorkJournalStatsProps) => {
               </CardHeader>
               <CardContent>
                 <div className="flex items-center">
-                  <Tool className="h-5 w-5 text-yellow-400 mr-2" />
+                  <Wrench className="h-5 w-5 text-yellow-400 mr-2" />
                   <span className="text-2xl font-bold">{totalEquipment}</span>
                 </div>
               </CardContent>

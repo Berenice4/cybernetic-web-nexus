@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Calendar, Search, FileText, List, Users, Tool, Box, CloudLightning, FileInput } from "lucide-react";
+import { Calendar, Search, FileText, List, Users, Wrench, Box, CloudLightning, FileInput } from "lucide-react";
 
 interface WorkJournalListProps {
   entries: WorkJournalEntry[];
@@ -40,7 +40,7 @@ const WorkJournalList = ({ entries }: WorkJournalListProps) => {
     switch (section) {
       case "activities": return <List className="h-4 w-4 text-blue-400" />;
       case "workers": return <Users className="h-4 w-4 text-green-400" />;
-      case "equipment": return <Tool className="h-4 w-4 text-yellow-400" />;
+      case "equipment": return <Wrench className="h-4 w-4 text-yellow-400" />;
       case "supplies": return <Box className="h-4 w-4 text-purple-400" />;
       case "circumstances": return <CloudLightning className="h-4 w-4 text-orange-400" />;
       case "serviceOrders": return <FileInput className="h-4 w-4 text-pink-400" />;
