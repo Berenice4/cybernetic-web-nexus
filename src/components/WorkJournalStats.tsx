@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { WorkJournalEntry } from "@/types/workJournal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -60,80 +61,80 @@ const WorkJournalStats = ({ entries }: WorkJournalStatsProps) => {
   })).sort((a, b) => a.date.localeCompare(b.date));
   
   // Colors for the pie chart
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A4DE6C'];
+  const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
 
   return (
     <div className="space-y-6">
       {entries.length === 0 ? (
         <div className="text-center py-12">
-          <LineChart className="mx-auto h-12 w-12 text-slate-500 mb-4" />
-          <h3 className="text-lg font-medium mb-2">No Statistics Available</h3>
-          <p className="text-slate-400">Create work journal entries to view statistics</p>
+          <LineChart className="mx-auto h-12 w-12 text-slate-400 mb-4" />
+          <h3 className="text-lg font-medium mb-2 text-slate-700">No Statistics Available</h3>
+          <p className="text-slate-500">Create work journal entries to view statistics</p>
         </div>
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Summary Cards */}
-            <Card className="border-slate-700/50 bg-slate-800/50">
+            <Card className="border-slate-200 bg-white">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-slate-400">Total Entries</CardTitle>
+                <CardTitle className="text-sm font-medium text-slate-500">Total Entries</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center">
-                  <Calendar className="h-5 w-5 text-blue-400 mr-2" />
-                  <span className="text-2xl font-bold">{totalEntries}</span>
+                  <Calendar className="h-5 w-5 text-blue-500 mr-2" />
+                  <span className="text-2xl font-bold text-slate-700">{totalEntries}</span>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="border-slate-700/50 bg-slate-800/50">
+            <Card className="border-slate-200 bg-white">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-slate-400">Total Workers</CardTitle>
+                <CardTitle className="text-sm font-medium text-slate-500">Total Workers</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center">
-                  <Users className="h-5 w-5 text-green-400 mr-2" />
-                  <span className="text-2xl font-bold">{totalWorkers}</span>
+                  <Users className="h-5 w-5 text-green-500 mr-2" />
+                  <span className="text-2xl font-bold text-slate-700">{totalWorkers}</span>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="border-slate-700/50 bg-slate-800/50">
+            <Card className="border-slate-200 bg-white">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-slate-400">Equipment Used</CardTitle>
+                <CardTitle className="text-sm font-medium text-slate-500">Equipment Used</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center">
-                  <Wrench className="h-5 w-5 text-yellow-400 mr-2" />
-                  <span className="text-2xl font-bold">{totalEquipment}</span>
+                  <Wrench className="h-5 w-5 text-yellow-500 mr-2" />
+                  <span className="text-2xl font-bold text-slate-700">{totalEquipment}</span>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="border-slate-700/50 bg-slate-800/50">
+            <Card className="border-slate-200 bg-white">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-slate-400">Activities</CardTitle>
+                <CardTitle className="text-sm font-medium text-slate-500">Activities</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center">
-                  <LineChart className="h-5 w-5 text-purple-400 mr-2" />
-                  <span className="text-2xl font-bold">{totalActivities}</span>
+                  <LineChart className="h-5 w-5 text-purple-500 mr-2" />
+                  <span className="text-2xl font-bold text-slate-700">{totalActivities}</span>
                 </div>
               </CardContent>
             </Card>
           </div>
           
           <Tabs defaultValue="workers">
-            <TabsList className="w-full md:w-auto">
-              <TabsTrigger value="workers">Workers</TabsTrigger>
-              <TabsTrigger value="equipment">Equipment</TabsTrigger>
-              <TabsTrigger value="trends">Activity Trends</TabsTrigger>
+            <TabsList className="w-full md:w-auto bg-white border border-slate-200">
+              <TabsTrigger value="workers" className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700">Workers</TabsTrigger>
+              <TabsTrigger value="equipment" className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700">Equipment</TabsTrigger>
+              <TabsTrigger value="trends" className="data-[state=active]:bg-blue-50 data-[state=active]:text-blue-700">Activity Trends</TabsTrigger>
             </TabsList>
             
             <TabsContent value="workers" className="mt-4">
-              <Card className="border-slate-700/50 bg-slate-800/50">
+              <Card className="border-slate-200 bg-white">
                 <CardHeader>
-                  <CardTitle>Workers by Qualification</CardTitle>
+                  <CardTitle className="text-slate-700">Workers by Qualification</CardTitle>
                   <CardDescription>Distribution of workers based on their qualifications</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -142,22 +143,22 @@ const WorkJournalStats = ({ entries }: WorkJournalStatsProps) => {
                       data={workersChartData}
                       margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                       <XAxis 
                         dataKey="name" 
                         angle={-45} 
                         textAnchor="end" 
                         height={70} 
-                        tick={{ fill: '#aaa', fontSize: 12 }}
+                        tick={{ fill: '#4b5563', fontSize: 12 }}
                       />
-                      <YAxis tick={{ fill: '#aaa' }} />
+                      <YAxis tick={{ fill: '#4b5563' }} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569', borderRadius: '0.375rem' }}
-                        itemStyle={{ color: '#e2e8f0' }}
-                        labelStyle={{ color: '#94a3b8' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '0.375rem' }}
+                        itemStyle={{ color: '#1f2937' }}
+                        labelStyle={{ color: '#4b5563' }}
                       />
                       <Legend wrapperStyle={{ paddingTop: '20px' }} />
-                      <Bar dataKey="workers" fill="#4ade80" name="Workers" />
+                      <Bar dataKey="workers" fill="#3b82f6" name="Workers" />
                     </BarChart>
                   </ChartContainer>
                 </CardContent>
@@ -165,9 +166,9 @@ const WorkJournalStats = ({ entries }: WorkJournalStatsProps) => {
             </TabsContent>
             
             <TabsContent value="equipment" className="mt-4">
-              <Card className="border-slate-700/50 bg-slate-800/50">
+              <Card className="border-slate-200 bg-white">
                 <CardHeader>
-                  <CardTitle>Equipment Usage</CardTitle>
+                  <CardTitle className="text-slate-700">Equipment Usage</CardTitle>
                   <CardDescription>Most frequently used equipment across all entries</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -188,9 +189,9 @@ const WorkJournalStats = ({ entries }: WorkJournalStatsProps) => {
                         ))}
                       </Pie>
                       <Tooltip
-                        contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569', borderRadius: '0.375rem' }}
-                        itemStyle={{ color: '#e2e8f0' }}
-                        labelStyle={{ color: '#94a3b8' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '0.375rem' }}
+                        itemStyle={{ color: '#1f2937' }}
+                        labelStyle={{ color: '#4b5563' }}
                       />
                       <Legend wrapperStyle={{ paddingTop: '20px' }} />
                     </PieChart>
@@ -200,9 +201,9 @@ const WorkJournalStats = ({ entries }: WorkJournalStatsProps) => {
             </TabsContent>
             
             <TabsContent value="trends" className="mt-4">
-              <Card className="border-slate-700/50 bg-slate-800/50">
+              <Card className="border-slate-200 bg-white">
                 <CardHeader>
-                  <CardTitle>Activity Trends</CardTitle>
+                  <CardTitle className="text-slate-700">Activity Trends</CardTitle>
                   <CardDescription>Work activity trends over time</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -211,24 +212,24 @@ const WorkJournalStats = ({ entries }: WorkJournalStatsProps) => {
                       data={activityTrends}
                       margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
                     >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                       <XAxis 
                         dataKey="date" 
                         angle={-45} 
                         textAnchor="end" 
                         height={70}
-                        tick={{ fill: '#aaa', fontSize: 12 }}
+                        tick={{ fill: '#4b5563', fontSize: 12 }}
                       />
-                      <YAxis tick={{ fill: '#aaa' }} />
+                      <YAxis tick={{ fill: '#4b5563' }} />
                       <Tooltip
-                        contentStyle={{ backgroundColor: '#1e293b', border: '1px solid #475569', borderRadius: '0.375rem' }}
-                        itemStyle={{ color: '#e2e8f0' }}
-                        labelStyle={{ color: '#94a3b8' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '0.375rem' }}
+                        itemStyle={{ color: '#1f2937' }}
+                        labelStyle={{ color: '#4b5563' }}
                       />
                       <Legend wrapperStyle={{ paddingTop: '20px' }} />
-                      <Bar dataKey="workers" stackId="a" fill="#4ade80" name="Workers" />
-                      <Bar dataKey="activities" stackId="a" fill="#a78bfa" name="Activities" />
-                      <Bar dataKey="equipment" stackId="a" fill="#fcd34d" name="Equipment" />
+                      <Bar dataKey="workers" stackId="a" fill="#10b981" name="Workers" />
+                      <Bar dataKey="activities" stackId="a" fill="#8b5cf6" name="Activities" />
+                      <Bar dataKey="equipment" stackId="a" fill="#f59e0b" name="Equipment" />
                     </BarChart>
                   </ChartContainer>
                 </CardContent>
